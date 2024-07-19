@@ -1,0 +1,31 @@
+.header {
+    max-width: 100%;
+    box-shadow: 5px 5px 20px gray;
+}
+.brand {
+    color: white;
+    margin-left: 2%;
+    padding: 0.8em;
+    width: 23%;
+    margin-top: 1;
+    margin-bottom: 1;
+}
+.search-box {
+    width: 75%;
+    height: 2.5em;
+    display: inline-block;
+    border: none;
+}
+.search-button {
+    width: 10%;
+    height: 2.5em;
+    border: none;
+    background-color: #dadada;
+}
+.dropdown {
+    width: 15%;
+    height: 2.5em;
+    border: none;
+    background-color: #dadada;
+    font-weight: 600;
+}
