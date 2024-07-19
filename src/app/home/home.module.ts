@@ -5,6 +5,7 @@ import { HeaderComponent } from './components/header/header.component';
 import { CatnavigationComponent } from './components/catnavigation/catnavigation.component';
 import { MatIconModule } from '@angular/material/icon';
 import { SidenavigationComponent } from './components/sidenavigation/sidenavigation.component';
+import { ProductsComponent } from './components/products/products.component';
 
 
 
@@ -14,7 +15,8 @@ import { SidenavigationComponent } from './components/sidenavigation/sidenavigat
     HomeComponent,
     HeaderComponent,
     CatnavigationComponent,
-    SidenavigationComponent
+    SidenavigationComponent,
+    ProductsComponent
   ],
   imports: [
     CommonModule,

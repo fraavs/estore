@@ -4,22 +4,20 @@
     </div>
 
     <div class="accordion">
-        <div class="accordion-item individual-category">
+        <div *ngFor="let mainCategory of getCategories(); let i=index" class="accordion-item individual-category">
             <div class="accordion-header">
-                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne">
+                <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                    [attr.data-bs-target]="'#collapse'+i">
                     <div class="category-title">
-                        <a href="#">Category</a>
+                        <a href="#">{{mainCategory.category}}</a>
                     </div>
                 </button>
             </div>
-            <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
+            <div [id]="'collapse'+i" class="accordion-collapse collapse show">
                 <div class="accordion-body">
                     <ul>
-                        <li class="sub-items">
-                            <a href="#">Item 1</a>
-                        </li>
-                        <li class="sub-items">
-                            <a href="#">Item 2</a>
+                        <li *ngFor="let subCategory of getCategories(mainCategory.id)" class="sub-items">
+                            <a href="#">{{subCategory.category}}</a>
                         </li>
                     </ul>
                 </div>
