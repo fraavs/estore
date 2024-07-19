@@ -1,0 +1,30 @@
+.side-navigation {
+    margin-top: 1em;
+    padding: 0.6em;
+    box-shadow: 1px 0px 14px 0px lightgray;
+    height: 97%;
+    border-radius: 1em;
+}
+
+.side-navigation .section-title {
+    padding: 1em;
+}
+
+.side-navigation .section-title h3 {
+    text-align: center;
+}
+
+.side-navigation .individual-category ul {
+    padding: 0;
+}
+
+.side-navigation .individual-category ul li {
+    text-align: center;
+    margin-bottom: 0.6em;
+    list-style-type: none;
+}
+
+.side-navigation .individual-category ul li a {
+    text-decoration: none;
+    color: black;
+}

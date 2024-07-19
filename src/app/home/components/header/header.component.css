@@ -1,0 +1,70 @@
+.header {
+    max-width: 100%;
+    box-shadow: 5px 5px 20px gray;
+}
+
+.brand {
+    color: white;
+    margin-left: 2%;
+    padding: 0.8em;
+    width: 23%;
+    margin-top: 1;
+    margin-bottom: 1;
+}
+
+.search-box {
+    width: 75%;
+    height: 2.5em;
+    display: inline-block;
+    border: none;
+}
+
+.search-button {
+    width: 10%;
+    height: 2.5em;
+    border: none;
+    background-color: #dadada;
+}
+
+.dropdown {
+    width: 15%;
+    height: 2.5em;
+    border: none;
+    background-color: #dadada;
+    font-weight: 600;
+}
+
+.login-container {
+    color: white;
+    display: inline-block;
+    width: 15%;
+    text-align: right;
+    margin: 1.7em 0.2em 0 0;
+}
+.mat-icon {
+    padding: 0.3em;
+    width: 50px;
+    margin-right: 5px;
+    font-size: 1.3em;
+}
+.login-container h5 {
+    display: inline-block;
+}
+
+.login-container h5 a {
+    text-decoration: none;
+    color: white;
+}
+.cart-wishlist {
+    width: 8%;
+    margin-top: 1.7em;
+    margin-left: 1em;
+}
+.cart-wishlist ul li {
+    color: white;
+    list-style-type: none;
+    display: inline-block;
+    font-size: 1em;
+    margin-right: 0.1em;
+    width: 30px;
+}
