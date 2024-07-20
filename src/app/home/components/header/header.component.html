@@ -5,9 +5,7 @@
         </div>
         <div class="p-0 my-4 w-50 h-25 bg-white">
             <select class="dropdown p-0 m-0">
-                <option>Men</option>
-                <option>Women</option>
-                <option>Kids</option>
+                <option *ngFor="let category of categoryStore.topLevelCategories$ | async">{{category.category}}</option>
             </select>
             <input class="form-control search-box" placeholder="Search...">
             <button class="search-button"><mat-icon>search</mat-icon></button>
@@ -18,7 +16,6 @@
         </div>
         <div class="cart-wishlist">
             <ul class="p-0">
-                <li class="list-item"><mat-icon>favorite</mat-icon></li>
                 <li class="list-item"><mat-icon>shopping_cart</mat-icon></li>
             </ul>
         </div>
