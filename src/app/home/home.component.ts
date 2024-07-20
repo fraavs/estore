@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { CategoriesStoreItem } from './services/categories.storeItem';
 
 @Component({
   selector: 'app-home',
@@ -6,5 +7,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent {
-
+  constructor(private categoriesStoreItem: CategoriesStoreItem) {
+    this.categoriesStoreItem.loadCategories();
+  }
 }

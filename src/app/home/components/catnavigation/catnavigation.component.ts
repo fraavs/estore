@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { CategoriesStoreItem } from '../../services/categories.storeItem';
+
 
 @Component({
   selector: 'app-catnavigation',
@@ -6,5 +8,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./catnavigation.component.css']
 })
 export class CatnavigationComponent {
+
+  constructor(public categoryStore: CategoriesStoreItem) {
+    
+  }
 
 }
