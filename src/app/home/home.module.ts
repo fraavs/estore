@@ -6,6 +6,7 @@ import { CatnavigationComponent } from './components/catnavigation/catnavigation
 import { MatIconModule } from '@angular/material/icon';
 import { SidenavigationComponent } from './components/sidenavigation/sidenavigation.component';
 import { ProductsComponent } from './components/products/products.component';
+import { SharedModule } from '../shared/shared.module';
 
 
 
@@ -20,7 +21,8 @@ import { ProductsComponent } from './components/products/products.component';
   ],
   imports: [
     CommonModule,
-    MatIconModule
+    MatIconModule,
+    SharedModule
   ]
 })
 export class HomeModule { }
