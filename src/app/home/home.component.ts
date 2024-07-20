@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { CategoriesStoreItem } from './services/category/categories.storeItem';
 import { ProductsStoreItem } from './services/product/products.storeItem';
+import { SearchKeyword } from './types/searchKeyword.type';
+
 
 @Component({
   selector: 'app-home',
@@ -8,16 +10,22 @@ import { ProductsStoreItem } from './services/product/products.storeItem';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent {
-  constructor(private categoriesStoreItem: CategoriesStoreItem, private ProductsStoreItem: ProductsStoreItem) {
+  constructor(
+    private categoriesStoreItem: CategoriesStoreItem,
+    private productsStoreItem: ProductsStoreItem) {
     this.categoriesStoreItem.loadCategories();
-    this.ProductsStoreItem.loadProducts();
+    this.productsStoreItem.loadProducts();
   }
 
   onSelectSubCategory(subCategoryId: number): void {
-    this.ProductsStoreItem.loadProducts('subcategoryid=' + subCategoryId);
+    this.productsStoreItem.loadProducts('subcategoryid=' + subCategoryId);
   }
 
   onSelectCategory(categoryId: number): void {
-    this.ProductsStoreItem.loadProducts('maincategoryid=' +categoryId);
+    this.productsStoreItem.loadProducts('maincategoryid=' + categoryId);
+  }
+
+  onSearchKeyword(searchKeyword: SearchKeyword): void {
+    this.productsStoreItem.loadProducts('maincategoryid=' + searchKeyword.categoryId + '&keyword=' + searchKeyword.keyword);
   }
 }
