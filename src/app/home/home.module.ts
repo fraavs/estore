@@ -8,12 +8,11 @@ import { SidenavigationComponent } from './components/sidenavigation/sidenavigat
 import { ProductsComponent } from './components/products/products.component';
 import { SharedModule } from '../shared/shared.module';
 import { HttpClientModule } from '@angular/common/http';
-import { CategoryService } from './services/category.service';
-import { CategoriesStoreItem } from './services/categories.storeItem';
+import { CategoryService } from './services/category/category.service';
+import { CategoriesStoreItem } from './services/category/categories.storeItem';
 import { ProductdetailsComponent } from './components/productdetails/productdetails.component';
-
-
-
+import { ProductsStoreItem } from './services/product/products.storeItem';
+import { ProductsService } from './services/product/products.service';
 
 @NgModule({
   declarations: [
@@ -30,6 +29,6 @@ import { ProductdetailsComponent } from './components/productdetails/productdeta
     SharedModule,
     HttpClientModule
   ],
-  providers: [CategoryService, CategoriesStoreItem]
+  providers: [CategoryService, CategoriesStoreItem, ProductsStoreItem, ProductsService]
 })
 export class HomeModule { }

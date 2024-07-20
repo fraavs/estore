@@ -28,6 +28,7 @@
 .side-navigation .individual-category ul li a {
     text-decoration: none;
     color: black;
+    cursor: pointer;
 }
 .side-navigation .individual-category ul li a:hover {
     color: gray;

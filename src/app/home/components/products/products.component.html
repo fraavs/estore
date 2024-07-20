@@ -1,5 +1,5 @@
 <div class="main-product-container">
-    <div *ngFor="let product of products" class="mx-5 p-3 product-card">
+    <div *ngFor="let product of productsStore.products$ | async" class="mx-5 p-3 product-card">
         <div class="product-image-container"><img [src]="'../../../../assets/images/'+ product.product_img" alt="">
         </div>
         <div class="product-info">

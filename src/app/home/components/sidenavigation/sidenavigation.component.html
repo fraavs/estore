@@ -17,7 +17,7 @@
                 <div class="accordion-body">
                     <ul>
                         <li *ngFor="let subCategory of getCategories(mainCategory.id)" class="sub-items">
-                            <a href="#">{{subCategory.category}}</a>
+                            <a (click)="onSubCategoryClick(subCategory)">{{subCategory.category}}</a>
                         </li>
                     </ul>
                 </div>
