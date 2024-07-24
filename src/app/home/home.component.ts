@@ -2,6 +2,9 @@ import { Component } from '@angular/core';
 import { CategoriesStoreItem } from './services/category/categories.storeItem';
 import { ProductsStoreItem } from './services/product/products.storeItem';
 import { SearchKeyword } from './types/searchKeyword.type';
+import { NavigationEnd, Router } from '@angular/router';
+import { every, filter } from 'rxjs';
+
 
 
 @Component({
@@ -12,9 +15,17 @@ import { SearchKeyword } from './types/searchKeyword.type';
 export class HomeComponent {
   constructor(
     private categoriesStoreItem: CategoriesStoreItem,
-    private productsStoreItem: ProductsStoreItem) {
+    private productsStoreItem: ProductsStoreItem,
+    private router: Router
+  ) {
     this.categoriesStoreItem.loadCategories();
     this.productsStoreItem.loadProducts();
+    router.events.pipe(filter(event => event instanceof NavigationEnd))
+      .subscribe(event => {
+        if ((event as NavigationEnd).url === '/home') {
+          router.navigate(['/home/products']);
+        }
+      });
   }
 
 
