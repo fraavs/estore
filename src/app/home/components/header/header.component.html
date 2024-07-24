@@ -4,12 +4,15 @@
             <h1>eStore</h1>
         </div>
         <div class="p-0 my-4 w-50 h-25 bg-white">
-            <select #categoryOptions class="dropdown p-0 m-0">
-                <option *ngFor="let category of categoryStore.topLevelCategories$ | async" value='{{category.id}}'>
-                    {{category.category}}</option>
-            </select>
-            <input #keyword class="form-control search-box" placeholder="Search...">
-            <button class="search-button" (click)="onClickSearch(keyword.value, categoryOptions.value)"><mat-icon>search</mat-icon></button>
+            <ng-container *ngIf="displaySearch">
+                <select #categoryOptions class="dropdown p-0 m-0">
+                    <option *ngFor="let category of categoryStore.topLevelCategories$ | async" value='{{category.id}}'>
+                        {{category.category}}</option>
+                </select>
+                <input #keyword class="form-control search-box" placeholder="Search...">
+                <button class="search-button"
+                    (click)="onClickSearch(keyword.value, categoryOptions.value)"><mat-icon>search</mat-icon></button>
+            </ng-container>
         </div>
         <div class="login-container p-0">
             <mat-icon class="user-icon">account_circle</mat-icon>

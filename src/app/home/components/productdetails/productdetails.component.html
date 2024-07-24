@@ -1,1 +1,15 @@
-<p>productdetails works!</p>
+<div class="row my-5 product-details-container">
+    <div class="product-image-container col-5">
+        <img [src]="'../../../../assets/images/' + product.product_img">
+    </div>
+
+    <div class="product-information-container col-7">
+        <span id="product-name">{{product.product_name}}</span>
+        <hr />
+        <div class="product-price">
+            Price : <span class="price">{{product.price | currency}}</span>
+            <div>Inclusive of all taxes.</div>
+        </div>
+        <div class="product-description my-3">{{product.product_description}}</div>
+    </div>
+</div>

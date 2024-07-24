@@ -1,6 +1,9 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 import { CategoriesStoreItem } from '../../services/category/categories.storeItem';
 import { SearchKeyword } from '../../types/searchKeyword.type';
+import { NavigationEnd, Router } from '@angular/router';
+import { every, filter } from 'rxjs';
+
 
 @Component({
   selector: 'app-header',
@@ -13,7 +16,13 @@ export class HeaderComponent {
 
   searchClicked: EventEmitter<SearchKeyword> = new EventEmitter<SearchKeyword>();
 
-  constructor(public categoryStore: CategoriesStoreItem) { }
+  displaySearch: boolean = true;
+
+  constructor(public categoryStore: CategoriesStoreItem, private router: Router) {
+    router.events.pipe(filter(event => event instanceof NavigationEnd)).subscribe(event => {
+      this.displaySearch = (event as NavigationEnd).url === '/home/products' ? true : false;
+    })
+  }
 
   onClickSearch(keyword: string, categoryId: string): void {
     this.searchClicked.emit({

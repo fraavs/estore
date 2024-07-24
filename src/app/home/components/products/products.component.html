@@ -1,9 +1,12 @@
 <div class="main-product-container">
     <div *ngFor="let product of productsStore.products$ | async" class="mx-5 p-3 product-card">
-        <div class="product-image-container"><img [src]="'../../../../assets/images/'+ product.product_img" alt="">
+        <div class="product-image-container">
+            <a routerLink="../product/{{product.id}}">
+                <img [src]="'../../../../assets/images/'+ product.product_img" alt="">
+            </a>
         </div>
         <div class="product-info">
-            <h5><a href="#">{{product.product_name}}</a></h5>
+            <h5><a routerLink="../product.{{product.id}}">{{product.product_name}}</a></h5>
             <p class="product-price">{{product.price | currency}}</p>
         </div>
     </div>
