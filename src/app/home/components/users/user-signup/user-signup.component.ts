@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, AbstractControl } from '@angular/forms';
 import { matchPasswords } from './validators/match-passwords.validator';
-import { UserService } from '../services/user-service.service';
+import { UserService } from '../../../services/users/user-service.service';
 import { user } from 'src/app/home/types/user.type';
 
 

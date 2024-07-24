@@ -10,3 +10,8 @@ export interface userLogin {
      email: string;
      password: string;
 }
+
+export interface loginToken {
+      token: string;
+      expiresInSeconds: number;
+}
