@@ -29,7 +29,7 @@
                 <input type="text" id="firstName" class="form-control" formControlName="firstName">
                 <span class="text-danger" *ngIf='firstName?.touched && firstName?.errors?.["required"]'>
                     FristName is required
-              </span>
+                </span>
             </div>
             <div class="form-group col-md-6">
                 <label for="lastName">LastName</label>
@@ -50,13 +50,23 @@
                 <span class="text-danger" *ngIf='confirmPassword?.touched && confirmPassword?.errors?.["required"]'>
                     Confirm Password is required
                 </span>
-                <span class="text-danger" *ngIf='confirmPassword?.touched && userSignupForm.errors?.["passwordMismatch"]'>
+                <span class="text-danger"
+                    *ngIf='confirmPassword?.touched && userSignupForm.errors?.["passwordMismatch"]'>
                     Password don't match
                 </span>
             </div>
             <div class="text-center form-group-margin">
                 <button type="submit" class="btn btn-warning" [disabled]="!userSignupForm.valid">Join</button>
             </div>
+        </div>
+        <div class="alert mt-4" [ngClass]="
+        alertType === 0
+        ? 'alert-success'
+        : alertType === 1
+        ? 'alert-warning'
+        : 'alert-danger'
+        " *ngIf="alertMessage !== ''">
+            {{alertMessage}}
         </div>
     </form>
 </div>
