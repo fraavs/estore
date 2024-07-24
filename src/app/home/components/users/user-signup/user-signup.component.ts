@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators, AbstractControl } from '@angular/forms';
+import { matchPasswords } from './validators/match-passwords.validator';
 
 @Component({
   selector: 'app-user-signup',
@@ -12,14 +13,38 @@ export class UserSignupComponent implements OnInit {
 
   ngOnInit(): void {
     this.userSignupForm = this.fb.group({
-      username: [''],
-      email: [''],
-      firstName: [''],
+      username: ['', Validators.required],
+      email: ['', [Validators.required, Validators.email]],
+      firstName: ['', Validators.required],
       lastName: [''],
-      password: [''],
-      confirmPassword: [''],
-    });
+      password: ['', Validators.required],
+      confirmPassword: ['', Validators.required],
+    },
+      {
+        validator: matchPasswords,
+      }
+    );
   }
 
-  ngSubmit(): void {}
+  ngSubmit(): void { }
+
+  get username(): AbstractControl<any, any> | null {
+    return this.userSignupForm.get('username');
+  }
+
+  get email(): AbstractControl<any, any> | null {
+    return this.userSignupForm.get('email');
+  }
+
+  get firstName(): AbstractControl<any, any> | null {
+    return this.userSignupForm.get('firstName');
+  }
+
+  get password(): AbstractControl<any, any> | null {
+    return this.userSignupForm.get('password');
+  }
+
+  get confirmPassword(): AbstractControl<any, any> | null {
+    return this.userSignupForm.get('confirmPassword');
+  }
 }
