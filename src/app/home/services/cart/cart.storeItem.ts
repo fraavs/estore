@@ -5,11 +5,16 @@ import { Observable } from "rxjs";
 
 export class CartStoreItem extends StoreItem<Cart> {
     constructor() {
-        super({
-            products: [],
-            totalAmount: 0,
-            totalProducts: 0,
-        });
+        const storedCart: any = sessionStorage.getItem('cart');
+        if (storedCart) {
+            super(JSON.parse(storedCart));
+        } else {
+            super({
+                products: [],
+                totalAmount: 0,
+                totalProducts: 0,
+            });
+        }
     }
 
     get cart$(): Observable<Cart> {
@@ -40,7 +45,7 @@ export class CartStoreItem extends StoreItem<Cart> {
         }
         this.cart.totalAmount += Number(product.price);
         ++this.cart.totalProducts;
-
+        this.saveCart();
     }
 
     removeProduct(cartItem: CartItem): void {
@@ -49,6 +54,11 @@ export class CartStoreItem extends StoreItem<Cart> {
         );
         this.cart.totalProducts -= cartItem.quantity;
         this.cart.totalAmount -= cartItem.amount;
+        if (this.cart.totalProducts === 0) {
+            sessionStorage.clear();
+        } else {
+            this.saveCart();
+        }
     }
 
     decreaseProductQuantity(cartItem: CartItem): void {
@@ -63,9 +73,14 @@ export class CartStoreItem extends StoreItem<Cart> {
                 cartProduct.quantity--;
                 this.cart.totalAmount -= Number(cartItem.product.price);
                 --this.cart.totalProducts;
+                this.saveCart();
             }
         }
     }
 
+    saveCart(): void {
+        sessionStorage.clear();
+        sessionStorage.setItem('cart', JSON.stringify(this.cart));
+    }
 
 }

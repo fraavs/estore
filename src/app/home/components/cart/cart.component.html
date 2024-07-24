@@ -21,7 +21,7 @@
                             {{cartItem.product.product_name}}
                         </span>
                         <div class="cart-item-price">
-                            <span>{{cartItem.product.price | currency}}</span> 
+                            <span>{{cartItem.product.price | currency}}</span>
                         </div>
                         <hr />
                         <div class="cart-edit-container">
@@ -41,6 +41,24 @@
                     </div>
                 </div>
             </div>
+        </div>
+        <div class="col-4 px-4 py-3 my-4 cart-summary" *ngIf="cartStore.cart.products.length">
+            <h2 class="mb-5 mt-3">Summary</h2>
+            <div>
+                <span>
+                    Cart Total: {{cart.totalAmount | currency}}
+                </span>
+                <br>
+                <span>
+                    Shipping Charges : Free
+                </span>
+                <hr />
+                <span class="summary-total">
+                    Total : {{cart.totalAmount | currency}}
+                </span>
+                <hr />
+            </div>
+            <div class="btn btn-outline-dark w-100 mb-4 mt-1">Checkout</div>
         </div>
     </div>
 </ng-container>
