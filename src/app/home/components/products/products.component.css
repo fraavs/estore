@@ -45,3 +45,28 @@ a {
 a:hover {
     color: gray;
 }
+
+.main-product-container .product-card .cart-button {
+    border: 1px solid black;
+    border-radius: 10px;
+}
+
+.main-product-container .product-card .cart-button .cart-icon-container {
+    font-size: 1.2em;
+}
+
+.main-product-container .product-card .cart-button .cart-text-container {
+    padding: 0.1em;
+}
+
+.main-product-container .product-card .cart-button .cart-text-container p {
+    font-weight: 600;
+    font-size: 1em;
+}
+
+.main-product-container .product-card .cart-button:hover {
+    cursor: pointer;
+    box-shadow: inset #dcdcdc 1px 2px 5px;
+    background-color: #ffc107;
+    border: #dcdcdc;
+}

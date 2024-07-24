@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { ProductsService } from '../../services/product/products.service';
 import { Product } from '../../types/products.type';
 import { Subscription } from 'rxjs';
+import { CartStoreItem } from '../../services/cart/cart.storeItem';
 
 
 @Component({
@@ -15,7 +16,11 @@ export class ProductdetailsComponent implements OnInit, OnDestroy {
   subscriptions: Subscription = new Subscription();
 
 
-  constructor(private activateRoute: ActivatedRoute, private productsService: ProductsService) { }
+  constructor(
+    private activateRoute: ActivatedRoute,
+    private productsService: ProductsService,
+    private cart: CartStoreItem
+  ) {}
 
   ngOnInit(): void {
     const id: number = Number(this.activateRoute.snapshot.paramMap.get('id'));
@@ -25,7 +30,11 @@ export class ProductdetailsComponent implements OnInit, OnDestroy {
       })
     );
   }
-  
+
+  addToCart() {
+    this.cart.addProduct(this.product);
+  }
+
   ngOnDestroy(): void {
     this.subscriptions.unsubscribe();
   }

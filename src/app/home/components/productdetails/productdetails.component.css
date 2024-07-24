@@ -44,3 +44,14 @@
     font-size: 1.5em;
     font-weight: 600;
 }
+
+.product-details-container .product-information-container .product-description .cart-text-container {
+    display: inline-block;
+    text-align: center;
+    margin-right: 1em;
+}
+
+.product-details-container .product-information-container .product-description .cart-text-container {
+    display: inline-block;
+    text-align: center;
+}

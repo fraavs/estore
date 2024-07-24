@@ -18,10 +18,16 @@
             <mat-icon class="user-icon">account_circle</mat-icon>
             <h5><a href="#">Sign in</a></h5> / <h5><a href="#">Register</a></h5>
         </div>
-        <div class="cart-wishlist">
-            <ul class="p-0">
-                <li class="list-item"><mat-icon>shopping_cart</mat-icon></li>
-            </ul>
+        <div class="cart-wishlist p-0 list-item">
+            <button type="button" class="btn btn-dark position-relative" (click)="navigateToCart()">
+                <mat-icon>shopping_cart</mat-icon>
+                <ng-container *ngIf="cartStore.cart$ | async as cart">
+                    <span *ngIf="cart.totalProducts > 0"
+                        class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-warning text-dark">
+                        {{cart.totalProducts}}
+                    </span>
+                </ng-container>
+            </button>
         </div>
     </div>
 </div>

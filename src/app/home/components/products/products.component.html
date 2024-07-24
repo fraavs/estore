@@ -8,6 +8,16 @@
         <div class="product-info">
             <h5><a routerLink="../product.{{product.id}}">{{product.product_name}}</a></h5>
             <p class="product-price">{{product.price | currency}}</p>
+            <div class="my-3" (click)="addToCart(product)">
+                <div class="cart-button">
+                    <div class="cart-icon-container">
+                        <mat-icon>shopping_cart</mat-icon>
+                    </div>
+                    <div class="cart-text-container mx-3">
+                        Add to Cart
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>

@@ -16,6 +16,8 @@ import { ProductsService } from './services/product/products.service';
 import { RouterModule } from '@angular/router';
 import { HomeRoutingModule } from './home-routing.module';
 import { ProductsGalleryComponent } from './components/products-gallery/products-gallery.component';
+import { CartStoreItem } from './services/cart/cart.storeItem';
+import { CartComponent } from './components/cart/cart.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +27,8 @@ import { ProductsGalleryComponent } from './components/products-gallery/products
     SidenavigationComponent,
     ProductsComponent,
     ProductdetailsComponent,
-    ProductsGalleryComponent
+    ProductsGalleryComponent,
+    CartComponent
   ],
   imports: [
     CommonModule,
@@ -35,6 +38,6 @@ import { ProductsGalleryComponent } from './components/products-gallery/products
     RouterModule,
     HomeRoutingModule,
   ],
-  providers: [CategoryService, CategoriesStoreItem, ProductsStoreItem, ProductsService]
+  providers: [CategoryService, CategoriesStoreItem, ProductsStoreItem, ProductsService, CartStoreItem]
 })
 export class HomeModule { }
