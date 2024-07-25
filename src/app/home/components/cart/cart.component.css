@@ -1,0 +1,20 @@
+.formGroup-up {
+    background-color: lightblue;
+    margin-bottom: 10px;
+    border-radius: 10px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.field-margin {
+    margin-bottom: 1em;
+}
+
+.submit-button {
+    border-color: black;
+    width: 100%;
+}
+
+.submit-button:hover {
+    background-color: black;
+    color: white;
+}
