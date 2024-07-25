@@ -11,7 +11,14 @@ export interface userLogin {
      password: string;
 }
 
+export interface loggedInUser {
+     firstName: string;
+     lastName: string;
+     username: string;
+}
+
 export interface loginToken {
       token: string;
       expiresInSeconds: number;
+      user: loggedInUser;
 }

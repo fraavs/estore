@@ -1,13 +1,27 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
-import { loginToken, user } from 'src/app/home/types/user.type';
+import { Observable, BehaviorSubject } from 'rxjs';
+import { loginToken, user, loggedInUser } from '../../types/user.type';
 
 
 @Injectable()
 export class UserService {
+  private isAuthenticated: BehaviorSubject<boolean> = new BehaviorSubject(false);
 
+  private loggedInUserInfo: BehaviorSubject<loggedInUser> = new BehaviorSubject(<loggedInUser>{});
   constructor(private httpClient: HttpClient) { }
+
+  get isUserAuthenticated(): boolean {
+    return this.isAuthenticated.value;
+  }
+
+  get isUserAuthenticated$(): Observable<boolean> {
+    return this.isAuthenticated.asObservable();
+  }
+
+  get loggedInUser$(): Observable<loggedInUser> {
+    return this.loggedInUserInfo.asObservable();
+  }
 
   createUser(user: user): Observable<any> {
     const url: string = 'http://localhost:5001/users/signup';
@@ -22,5 +36,17 @@ export class UserService {
   activateToken(token: loginToken): void {
     localStorage.setItem('token', token.token);
     localStorage.setItem('expiry', new Date(Date.now() + token.expiresInSeconds * 1000).toISOString())
+    localStorage.setItem('username', token.user.username);
+    localStorage.setItem('firstName', token.user.firstName);
+    localStorage.setItem('lastName', token.user.lastName);
+
+    this.isAuthenticated.next(true);
+    this.loggedInUserInfo.next(token.user);
+  }
+
+  logout(): void {
+    localStorage.clear();
+    this.isAuthenticated.next(false);
+    this.loggedInUserInfo.next(<loggedInUser>{});
   }
 }
