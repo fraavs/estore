@@ -7,12 +7,26 @@ import { RouterModule } from "@angular/router";
 import { AdminRoutingModule } from './admin-routing.module';
 import { HeaderComponent } from './header/header.component';
 import { CatnavigationComponent } from './catnavigation/catnavigation.component';
+import { CartStoreItem } from "../home/services/cart/cart.storeItem";
+import { CategoryService } from "../home/services/category/category.service";
+import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { OrdersComponent } from './components/orders/orders.component';
+import { ProductsComponent } from './components/products/products.component';
+import { CategoryComponent } from './components/category/category.component';
+import { UsersComponent } from './components/users/users.component';
+import { UserService } from "../home/services/users/user-service.service";
+
 
 @NgModule({
     declarations: [
         AdminComponent,
         HeaderComponent,
         CatnavigationComponent,
+        DashboardComponent,
+        OrdersComponent,
+        ProductsComponent,
+        CategoryComponent,
+        UsersComponent,
     ],
     imports: [
         CommonModule,
@@ -22,6 +36,9 @@ import { CatnavigationComponent } from './catnavigation/catnavigation.component'
         AdminRoutingModule,
     ],
     providers: [
+        CategoryService,
+        CartStoreItem,
+        UserService,
     ]
 })
 

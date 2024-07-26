@@ -51,6 +51,7 @@ import { UserService } from './services/users/user-service.service';
     ProductsStoreItem, 
     ProductsService, 
     CartStoreItem, 
-    UserService]
+    UserService,
+  ]
 })
 export class HomeModule { }

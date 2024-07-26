@@ -22,6 +22,11 @@ export class UserService {
     return this.isAuthenticated.asObservable();
   }
 
+  getUsers(): Observable<user> {
+    const url: string = 'http://localhost:5001/users';
+    return this.httpClient.get<user>(url);
+  }
+
   get loggedInUser$(): Observable<loggedInUser> {
     return this.loggedInUserInfo.asObservable();
   }
