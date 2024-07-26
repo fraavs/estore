@@ -15,6 +15,7 @@ import { ProductsComponent } from './components/products/products.component';
 import { CategoryComponent } from './components/category/category.component';
 import { UsersComponent } from './components/users/users.component';
 import { UserService } from "../home/services/users/user-service.service";
+import { ProductsService } from "../home/services/product/products.service";
 
 
 @NgModule({
@@ -39,6 +40,8 @@ import { UserService } from "../home/services/users/user-service.service";
         CategoryService,
         CartStoreItem,
         UserService,
+        ProductsService,
+        CategoryService,
     ]
 })
 
