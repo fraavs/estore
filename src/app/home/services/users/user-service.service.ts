@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, BehaviorSubject, last } from 'rxjs';
 import { loginToken, user, loggedInUser } from '../../types/user.type';
+import { map } from 'rxjs/operators';
 
 
 @Injectable()
@@ -22,9 +23,10 @@ export class UserService {
     return this.isAuthenticated.asObservable();
   }
 
-  getUsers(): Observable<user> {
-    const url: string = 'http://localhost:5001/users';
-    return this.httpClient.get<user>(url);
+  getUsers(): Observable<user[]> {
+    const url: string = 'http://localhost:5001/users/userInfo';
+    return this.httpClient.get<{ users: user[] }>(url).pipe(
+      map((response: { users: user[] }) => response.users));
   }
 
   get loggedInUser$(): Observable<loggedInUser> {
