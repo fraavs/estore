@@ -13,7 +13,7 @@
         <div class="col-8 p-4">
             <div class="row cart-item-card" *ngFor="let cartItem of cart.products">
                 <div class="col-4">
-                    <img [src]="'../../../../assets/images/' + cartItem.product.product_img">
+                    <img width="150px" height="150px" [src]="'../../../../assets/images/' + cartItem.product.product_img">
                 </div>
                 <div class="col-8">
                     <div class="p-3 cart-item-details">
@@ -40,6 +40,8 @@
                         </div>
                     </div>
                 </div>
+                <br />
+                <hr />
             </div>
         </div>
 

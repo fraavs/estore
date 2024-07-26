@@ -8,6 +8,8 @@ import { map } from 'rxjs/operators';
 @Injectable()
 export class UserService {
   private autoLogoutTimer: any;
+  private authToken: string;
+
   private isAuthenticated: BehaviorSubject<boolean> = new BehaviorSubject(false);
 
   private loggedInUserInfo: BehaviorSubject<loggedInUser> = new BehaviorSubject(<loggedInUser>{});
@@ -33,6 +35,10 @@ export class UserService {
     return this.loggedInUserInfo.asObservable();
   }
 
+  get token(): string {
+    return this.authToken;
+  }
+
   createUser(user: user): Observable<any> {
     const url: string = 'http://localhost:5001/users/signup';
     return this.httpClient.post(url, user);
@@ -43,17 +49,19 @@ export class UserService {
     return this.httpClient.post(url, { email: email, password: password });
   }
 
-  activateToken(token: loginToken): void {
+  activateToken(token: loginToken, email: string): void {
     // token.expiresInSeconds = 10;
     localStorage.setItem('token', token.token);
     localStorage.setItem('expiry', new Date(Date.now() + token.expiresInSeconds * 1000).toISOString())
     localStorage.setItem('username', token.user.username);
     localStorage.setItem('firstName', token.user.firstName);
     localStorage.setItem('lastName', token.user.lastName);
+    localStorage.setItem('email', email);
 
     this.isAuthenticated.next(true);
     this.loggedInUserInfo.next(token.user);
     this.setAutoLogoutTimer(token.expiresInSeconds * 1000);
+    this.authToken = token.token;
   }
 
   logout(): void {
@@ -80,16 +88,19 @@ export class UserService {
         const username: string | null = localStorage.getItem('username');
         const firstName: string | null = localStorage.getItem('firstName');
         const lastName: string | null = localStorage.getItem('lastName');
+        const email: string | null = localStorage.getItem('email');
 
         const user: loggedInUser = {
           username: username !== null ? username : '',
           firstName: firstName !== null ? firstName : '',
           lastName: lastName !== null ? lastName : '',
+          email: email !== null ? email : '',
         }
 
         this.isAuthenticated.next(true);
         this.loggedInUserInfo.next(user);
         this.setAutoLogoutTimer(expiresIn);
+        this.authToken = token;
       } else {
         this.logout();
       }

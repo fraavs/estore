@@ -15,6 +15,7 @@ export interface loggedInUser {
      firstName: string;
      lastName: string;
      username: string;
+     email: string;
 }
 
 export interface loginToken {

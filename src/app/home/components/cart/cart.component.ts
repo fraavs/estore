@@ -28,6 +28,7 @@ export class CartComponent implements OnInit, OnDestroy {
       username: '',
       firstName: '',
       lastName: '',
+      email: '',
     };
 
     this.subscriptions.add(
