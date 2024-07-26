@@ -5,6 +5,11 @@
         <div class="btn btn-warning my-3" (click)="navigateToHome()">
             <span style="font-weight: 500">Continue Shopping</span>
         </div>
+
+        <div class="alert" [ngClass]="alertType === 0 ? 'alert-success' : 'alert-danger'" *ngIf="alertMessage !== ''">
+            {{ alertMessage }}
+        </div>
+
     </div>
 </ng-container>
 
@@ -13,7 +18,8 @@
         <div class="col-8 p-4">
             <div class="row cart-item-card" *ngFor="let cartItem of cart.products">
                 <div class="col-4">
-                    <img width="150px" height="150px" [src]="'../../../../assets/images/' + cartItem.product.product_img">
+                    <img width="150px" height="150px"
+                        [src]="'../../../../assets/images/' + cartItem.product.product_img">
                 </div>
                 <div class="col-8">
                     <div class="p-3 cart-item-details">
@@ -46,88 +52,93 @@
         </div>
 
         <div class="col-4">
-            <form [formGroup]="orderForm" (ngSubmit)="onSubmit()">
-                <div class="row formGroup-up">
-                    <div class="px-4 py-1 my-3 cart-summary">
-                        <h2 class="mb-5 mt-3">Delivery Address</h2>
-                        <div class="form-group row field-margin">
-                            <label for="name" class="col-sm-2 col-form-label">
-                                Name
-                            </label>
-                            <div class="col-sm-10">
-                                <input type="text" class="form-control" id="name" formControlName="name">
+            <ng-container *ngIf="cartStore.cart.products.length">
+                <div class="alert" [ngClass]="alertType === 0 ? 'alert-success' : 'alert-danger'" *ngIf="alertMessage !== ''">
+                    {{ alertMessage }}
+                </div>
+                <form [formGroup]="orderForm" (ngSubmit)="onSubmit()">
+                    <div class="row formGroup-up">
+                        <div class="px-4 py-1 my-3 cart-summary">
+                            <h2 class="mb-5 mt-3">Delivery Address</h2>
+                            <div class="form-group row field-margin">
+                                <label for="name" class="col-sm-2 col-form-label">
+                                    Name
+                                </label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" id="name" formControlName="name">
+                                </div>
                             </div>
-                        </div>
 
-                        <div class="form-group row field-margin">
-                            <label for="street" class="col-sm-2 col-form-label">
-                                Street
-                            </label>
-                            <div class="col-sm-10">
-                                <input type="text" class="form-control" id="street" formControlName="street">
+                            <div class="form-group row field-margin">
+                                <label for="street" class="col-sm-2 col-form-label">
+                                    Street
+                                </label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" id="street" formControlName="street">
+                                </div>
                             </div>
-                        </div>
 
-                        <div class="form-group row field-margin">
-                            <label for="city" class="col-sm-2 col-form-label">
-                                City
-                            </label>
-                            <div class="col-sm-10">
-                                <input type="text" class="form-control" id="city" formControlName="city">
+                            <div class="form-group row field-margin">
+                                <label for="city" class="col-sm-2 col-form-label">
+                                    City
+                                </label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" id="city" formControlName="city">
+                                </div>
                             </div>
-                        </div>
 
-                        <div class="form-group row field-margin">
-                            <label for="state" class="col-sm-2 col-form-label">
-                                State
-                            </label>
-                            <div class="col-sm-10">
-                                <input type="text" class="form-control" id="state" formControlName="state">
+                            <div class="form-group row field-margin">
+                                <label for="state" class="col-sm-2 col-form-label">
+                                    State
+                                </label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" id="state" formControlName="state">
+                                </div>
                             </div>
-                        </div>
 
-                        <div class="form-group row field-margin">
-                            <label for="zipCode" class="col-sm-2 col-form-label">
-                                ZipCode
-                            </label>
-                            <div class="col-sm-10">
-                                <input type="text" class="form-control" id="zipCode" formControlName="zipCode">
+                            <div class="form-group row field-margin">
+                                <label for="zipCode" class="col-sm-2 col-form-label">
+                                    ZipCode
+                                </label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" id="zipCode" formControlName="zipCode">
+                                </div>
                             </div>
-                        </div>
 
-                        <div class="form-group row field-margin">
-                            <label for="country" class="col-sm-2 col-form-label">
-                                Country
-                            </label>
-                            <div class="col-sm-10">
-                                <input type="text" class="form-control" id="country" formControlName="country">
+                            <div class="form-group row field-margin">
+                                <label for="country" class="col-sm-2 col-form-label">
+                                    Country
+                                </label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" id="country" formControlName="country">
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="row formGroup-up">
-                    <div class="px-4 py-3 my-4 cart-summary" *ngIf="cartStore.cart.products.length">
-                        <h2 class="mb-5 mt-3">Summary</h2>
-                        <div>
-                            <span>
-                                Cart Total: {{cart.totalAmount | currency}}
-                            </span>
-                            <br>
-                            <span>
-                                Shipping Charges : Free
-                            </span>
-                            <hr />
-                            <span class="summary-total">
-                                Total : {{cart.totalAmount | currency}}
-                            </span>
-                            <hr />
+                    <div class="row formGroup-up">
+                        <div class="px-4 py-3 my-4 cart-summary">
+                            <h2 class="mb-5 mt-3">Summary</h2>
+                            <div>
+                                <span>
+                                    Cart Total: {{cart.totalAmount | currency}}
+                                </span>
+                                <br>
+                                <span>
+                                    Shipping Charges : Free
+                                </span>
+                                <hr />
+                                <span class="summary-total">
+                                    Total : {{cart.totalAmount | currency}}
+                                </span>
+                                <hr />
+                            </div>
+                            <button class="btn submit-button" type="submit" [disabled]="!orderForm.valid || disableCheckout">
+                                Checkout
+                            </button>
                         </div>
-                        <button class="btn submit-button" type="submit" [disabled]="!orderForm.valid">
-                            Checkout
-                        </button>
                     </div>
-                </div>
-            </form>
+                </form>
+            </ng-container>
         </div>
     </div>
 </ng-container>

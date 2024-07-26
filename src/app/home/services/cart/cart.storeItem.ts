@@ -83,4 +83,10 @@ export class CartStoreItem extends StoreItem<Cart> {
         sessionStorage.setItem('cart', JSON.stringify(this.cart));
     }
 
+    clearCart(): void {
+        sessionStorage.clear();
+        this.cart.products = [];
+        this.cart.totalAmount = 0;
+        this.cart.totalProducts = 0;
+    }
 }

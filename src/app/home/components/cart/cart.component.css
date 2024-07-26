@@ -18,3 +18,11 @@
     background-color: black;
     color: white;
 }
+.ec-main-div {
+    text-align: center;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.ec-main-div .ex-text {
+    font-size: 40px;
+}
