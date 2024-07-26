@@ -1,0 +1,23 @@
+.header {
+    max-width: 100%;
+    box-shadow: 5px 5px 20px gray;
+}
+
+.brand {
+    color: white;
+    margin-left: 2%;
+    padding: 0.8em;
+    width: 5%;
+    margin-top: 1em;
+    margin-bottom: 1em;
+}
+
+.blank {
+    width: 88%;
+}
+
+.cart-wishlist {
+    width: 5%;
+    margin-top: 1em;
+    margin-bottom: 1em;
+}
