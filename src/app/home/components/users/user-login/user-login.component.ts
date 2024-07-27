@@ -47,7 +47,12 @@ export class UserLoginComponent implements OnInit {
           }, 1000);
         } else {
           console.log('navigating back...');
-          this.location.back();
+          this.userService.activateToken(result);
+          this.alertType = 0;
+          this.alertMessage = 'Login successful';
+          setTimeout(() => {
+            this.location.back();
+          }, 1000);
         }
       }, error: (error) => {
         this.alertType = 2;
