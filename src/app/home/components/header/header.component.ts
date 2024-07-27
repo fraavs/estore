@@ -56,7 +56,6 @@ export class HeaderComponent implements OnDestroy {
 
   logout(): void {
     this.userService.logout();
-    console.log('User logged out.')
   }
 
   ngOnDestroy(): void {

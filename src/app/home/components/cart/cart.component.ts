@@ -48,6 +48,11 @@ export class CartComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.orderForm = this.fb.group({
       name: [`${this.user.firstName} ${this.user.lastName}`, Validators.required],
+      street: [''],
+      city: [''],
+      state: [''],
+      zipCode: [''],
+      country: ['']
     })
   }
 

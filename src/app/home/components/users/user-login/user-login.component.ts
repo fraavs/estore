@@ -45,7 +45,6 @@ export class UserLoginComponent implements OnInit {
             this.router.navigate(['/admin']);
           }, 1000);
         } else {
-          console.log('navigating back...');
           this.userService.activateToken(result);
           this.alertType = 0;
           this.alertMessage = 'Login successful';
