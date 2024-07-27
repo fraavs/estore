@@ -58,21 +58,21 @@
     color: white;
 }
 
-.user-container {
+.header .user-container {
     color: white;
     display: inline-block;
     width: 10em;
     margin: 1.5em 0.2em 0 1.5em;
 }
 
-.user-dropdown {
+.header .user-container .user-dropdown {
     background-color: #212529;
     width: 11em;
     z-index: 1000;
     position: absolute;
 }
-
-.user-dropdown-button {
+   
+.header .user-container .user-dropdown .user-dropdown-button {
     background-color: #212529;
     border-color: #212529;
 }

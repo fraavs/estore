@@ -16,7 +16,13 @@ export class OrderService {
     private userservice: UserService,
   ) { }
 
-  saveOrder(deliveryAddress: DeliveryAddress, userEmail: string) : Observable<any> {
+  getAllOrders(): Observable<any> {
+    const url: string = 'http://localhost:5001/orders/allorders';
+    return this.httpClient.get(url);
+  }
+
+
+  saveOrder(deliveryAddress: DeliveryAddress, userEmail: string): Observable<any> {
     const url: string = 'http://localhost:5001/orders/add';
     const orderDetails: OrderItem[] = [];
     this.cartStore.cart.products.forEach(product => {

@@ -9,10 +9,9 @@ import { map } from 'rxjs/operators';
 export class UserService {
   private autoLogoutTimer: any;
   private authToken: string;
-
   private isAuthenticated: BehaviorSubject<boolean> = new BehaviorSubject(false);
-
   private loggedInUserInfo: BehaviorSubject<loggedInUser> = new BehaviorSubject(<loggedInUser>{});
+ 
   constructor(private httpClient: HttpClient) {
     this.loadToken();
   }
@@ -31,10 +30,6 @@ export class UserService {
       map((response: { users: user[] }) => response.users));
   }
 
-  get loggedInUser$(): Observable<loggedInUser> {
-    return this.loggedInUserInfo.asObservable();
-  }
-
   get token(): string {
     return this.authToken;
   }
@@ -47,6 +42,10 @@ export class UserService {
   login(email: string, password: string): Observable<any> {
     const url: string = 'http://localhost:5001/users/login';
     return this.httpClient.post(url, { email: email, password: password });
+  }
+
+  get loggedInUser$(): Observable<loggedInUser> {
+    return this.loggedInUserInfo.asObservable();
   }
 
   activateToken(token: loginToken): void {

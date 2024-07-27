@@ -14,22 +14,26 @@
                     (click)="onClickSearch(keyword.value, categoryOptions.value)"><mat-icon>search</mat-icon></button>
             </ng-container>
         </div>
+        <!-- Join-menu start-->
         <div class="login-container p-0" *ngIf="!isUserAuthenticated">
             <mat-icon class="user-icon">account_circle</mat-icon>
             <h5><a routerLink="login">Sign in / Join</a></h5>
         </div>
+        <!-- Join-menu end -->
 
+        <!-- dropdown-menu start -->
         <div class="user-container p-0" *ngIf="isUserAuthenticated">
             <div class="dropdown user-dropdown">
-                <button class="btn btn-secondary dropdown-toggle user-dropdown-button" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <button class="btn btn-secondary dropdown-toggle user-dropdown-button" type="button"
+                    data-bs-toggle="dropdown" aria-expanded="false">
                     <mat-icon>account_circle</mat-icon>Hi {{userName}}
                 </button>
-                <ul class="dropdown-menu">
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                     <li><a class="dropdown-item" (click)="logout()">Logout</a></li>
                 </ul>
             </div>
         </div>
-
+        <!-- dropdown-menu end -->
         <div class="cart-wishlist p-0 list-item">
             <button type="button" class="btn btn-dark position-relative" (click)="navigateToCart()">
                 <mat-icon>shopping_cart</mat-icon>

@@ -30,7 +30,7 @@ export class HeaderComponent implements OnDestroy {
     public cartStore: CartStoreItem,
     public userService: UserService
   ) {
-    router.events.pipe(filter(event => event instanceof NavigationEnd)).subscribe(event => {
+    router.events.pipe(filter((event) => event instanceof NavigationEnd)).subscribe((event) => {
       this.displaySearch = (event as NavigationEnd).url === '/home/products' ? true : false;
     });
 
