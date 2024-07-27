@@ -42,7 +42,6 @@ export class UserLoginComponent implements OnInit {
           this.alertType = 0;
           this.alertMessage = 'Login successful';
           setTimeout(() => {
-            console.log('navigating to admin page...');
             this.router.navigate(['/admin']);
           }, 1000);
         } else {

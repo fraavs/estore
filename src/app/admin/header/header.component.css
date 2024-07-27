@@ -13,11 +13,30 @@
 }
 
 .blank {
-    width: 88%;
+    width: 78%;
 }
 
 .cart-wishlist {
-    width: 5%;
+    width: 15%;
     margin-top: 1em;
     margin-bottom: 1em;
+}
+
+.header .user-container {
+    color: white;
+    display: inline-block;
+    width: 10em;
+    margin: 1.5em 0.2em 0 1.5em;
+}
+
+.header .user-container .user-dropdown {
+    background-color: #212529;
+    width: 11em;
+    z-index: 1000;
+    position: absolute;
+}
+   
+.header .user-container .user-dropdown .user-dropdown-button {
+    background-color: #212529;
+    border-color: #212529;
 }

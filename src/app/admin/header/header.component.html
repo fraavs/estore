@@ -4,17 +4,17 @@
             <h1>ADMIN</h1>
         </div>
         <div class="blank">
-
         </div>
-        <div class="cart-wishlist p-0 list-item">
-            <button type="button" class="btn btn-dark position-relative">
-                <mat-icon>account_circle</mat-icon>
-                <ng-container>
-                    <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-warning text-dark">
-                    Hi! 
-                    </span>
-                </ng-container>
-            </button>
+        <div class="user-container p-0">
+            <div class="dropdown user-dropdown">
+                <button class="btn btn-secondary dropdown-toggle user-dropdown-button" type="button"
+                    data-bs-toggle="dropdown" aria-expanded="false">
+                    <mat-icon>account_circle</mat-icon>Hi Admin
+                </button>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <li><a class="dropdown-item" (click)="logout()">Logout</a></li>
+                </ul>
+            </div>
         </div>
     </div>
 </div>
